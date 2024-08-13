@@ -16,7 +16,7 @@ public class Controller {
 
     @GetMapping("/formTinhToan")
     public String getFormTinhToan() {
-        return "bai1TinhToan";
+        return "bai1ChuyenDoiTien";
     }
 
     @PostMapping("/tinhToan")
@@ -36,7 +36,7 @@ public class Controller {
             rs = "khong phai la so";
             System.out.println(rs);
         }
-        ModelAndView modelAndView = new ModelAndView("bai1TinhToan");
+        ModelAndView modelAndView = new ModelAndView("bai1ChuyenDoiTien");
         modelAndView.addObject("result", rs);
         return modelAndView;
     }
