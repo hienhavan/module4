@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:object="${medical}" >
+    <h1>TO KHAI TE</h1>
+    <label for="name">Ho ten</label>
+    <input type="text" id="name" th:field="*{name}" placeholder="Enter your name"><br>
+    <label for="age">Nam Sinh</label>
+    <input type="text" id="age" pattern="^[\d+{2}]$" th:field="*{age}" placeholder="age">
+    <label for="gender">Gioi Tinh</label>
+    <select id="gender" th:field="*{gender}" >
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select><br>
+    <label for="cmnd">So CMND</label>
+    <input type="text" id="cmnd" pattern="^[\d+{9}]$" th:field="*{cmnd}" placeholder="cmnd"><br>
+    <div>
+        <strong>Thong tin di lai</strong>
+        <input type="radio">Tau bay
+        <input type="radio">Tau thuyen
+        <input type="radio">O to
+    </div>
+    <label for="vehicleNumber">So hieu phuong tien</label><br>
+    <input type="text" id="vehicleNumber" name="vehicleNumber" placeholder="vehicleNumber"><br>
+    <div>
+        <strong>Ngay khoi hanh</strong><br>
+        <input type="date">
+        <strong>Ngay ket thuc</strong><br>
+        <input type="date">
+    </div>
+        <div>
+        <strong>Dia chi lien lac</strong>
+        <label for="province">Tinh/Thanh</label>
+        <select id="province">
+            <option value="hcm">HCM</option>
+            <option value="hn">Ho Chi Minh</option>
+            <option value="dn">Dac Nong</option>
+        </select>
+        </div>
+</form>
+</body>
+</html>

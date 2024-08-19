@@ -1,4 +1,4 @@
-package org.example.springmvc.controller;
+package org.example.springmvc.homecontroller.bai1;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +18,11 @@ public class Controller {
     public String getFormTinhToan() {
         return "bai1ChuyenDoiTien";
     }
+    @GetMapping("/formTinhToan1")
+    public String getFormTinhToan1() {
+        return "bai1ChuyenDoiTien1";
+    }
+
 
     @PostMapping("/tinhToan")
     public ModelAndView calculate(@RequestParam("money") double money, @RequestParam("op") String op) {

@@ -26,12 +26,27 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-    implementation 'org.springframework:spring-webmvc:5.3.20'  // Phiên bản Spring MVC
-    implementation 'org.springframework:spring-core:5.3.20'    // Phiên bản Spring Core
+    implementation 'org.springframework:spring-webmvc:5.3.20'
+    implementation 'org.springframework:spring-core:5.3.20'
 
-    // https://mvnrepository.com/artifact/javax.servlet/jstl
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 
+
+// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5
+    implementation 'org.thymeleaf:thymeleaf-spring5:3.1.2.RELEASE'
+
+
+
+    implementation 'org.springframework:spring-orm:5.3.20'
+    implementation 'org.springframework.data:spring-data-jpa:2.7.0'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'org.hibernate:hibernate-core:5.6.8.Final'
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.0'
+    implementation 'mysql:mysql-connector-java'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
 
 }
 
