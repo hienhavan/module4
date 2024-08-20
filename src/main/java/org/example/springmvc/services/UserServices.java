@@ -1,6 +1,6 @@
 package org.example.springmvc.services;
 
-import org.example.springmvc.model.UserDTO;
+import org.example.springmvc.model.bai6_7.User;
 import org.example.springmvc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,19 +13,19 @@ public class UserServices {
 
     @Autowired
 public UserRepository userRepository;
-    public List<UserDTO> showList() {
+    public List<User> showList() {
         return userRepository.findAll();
     }
 public void deleteUser(int id) {
         userRepository.deleteById(id);
 
 }
-public Optional<UserDTO> getUser(int id){
+public Optional<User> getUser(int id){
        return userRepository.findById(id);
 }
-public void addUser(UserDTO user){
+public void addUser(User user){
         if(user.getId() == null){
-            user.setId(10); //Assuming id = 0 when creating new user.
+            user.setId(10);
         }
         userRepository.save(user);
 }

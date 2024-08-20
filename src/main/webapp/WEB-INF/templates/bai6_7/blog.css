@@ -1,0 +1,26 @@
+.form__btn:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.form__btn:hover {
+    background: #0d7811;
+}
+.form__btn {
+    /*height: 2.8rem;*/
+    border-radius: .6rem;
+    border: none;
+    background: #dc3545;
+    color: #ffffff;
+    justify-self: stretch;
+    font-family: auto;
+    justify-content:center;
+    cursor: pointer;
+    display: flex;
+    margin: auto;
+    padding: 5px;
+    margin-top: 10px;
+    width: 50%;
+    transition: all 0.3s ease;
+
+}

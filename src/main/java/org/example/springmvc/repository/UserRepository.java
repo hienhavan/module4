@@ -1,12 +1,10 @@
 package org.example.springmvc.repository;
 
-import org.example.springmvc.model.UserDTO;
+import org.example.springmvc.model.bai6_7.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface UserRepository extends JpaRepository<UserDTO, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 }

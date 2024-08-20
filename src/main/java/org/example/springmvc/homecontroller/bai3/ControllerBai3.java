@@ -1,6 +1,6 @@
 package org.example.springmvc.homecontroller.bai3;
 
-import org.example.springmvc.model.UserDTO;
+import org.example.springmvc.model.bai6_7.User;
 import org.example.springmvc.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class ControllerBai3 {
     @GetMapping("/showUser")
     public ModelAndView showUser() {
         ModelAndView modelAndView = new ModelAndView("bai3ListUser");
-        List<UserDTO> listUsers = new ArrayList<UserDTO>();
+        List<User> listUsers = new ArrayList<User>();
         listUsers = userService.showList();
         modelAndView.addObject("listUsers", listUsers);
         return modelAndView;
@@ -38,7 +38,7 @@ public class ControllerBai3 {
 
     @PostMapping("/addUser")
     public String addUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-        UserDTO user = new UserDTO();
+        User user = new User();
         user.setEmail(email);
         user.setPassword(password);
         userService.addUser(user);

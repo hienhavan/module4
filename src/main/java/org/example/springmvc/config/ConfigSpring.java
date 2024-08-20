@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -38,6 +39,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "org.example.springmvc")
 @PropertySource("classpath:upload_file.properties")
 @EnableJpaRepositories(basePackages = "org.example.springmvc.repository")
+@EnableSpringDataWebSupport
 public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
 
@@ -53,7 +55,7 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/minitest1/");
+        templateResolver.setPrefix("/WEB-INF/templates/demo_bai8/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCacheable(true);
@@ -98,9 +100,9 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/quan-ly-tai-chinh");
-        dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setUrl(System.getenv("URL"));
+        dataSource.setUsername(System.getenv("USERNAME"));
+        dataSource.setPassword(System.getenv("PASSWORD"));
         return dataSource;
     }
 

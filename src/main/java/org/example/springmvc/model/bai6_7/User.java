@@ -1,10 +1,10 @@
-package org.example.springmvc.model;
+package org.example.springmvc.model.bai6_7;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class UserDTO {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,10 @@ public class UserDTO {
     @Column(name = "password")
     private String password;
 
-    public UserDTO() {
+    public User() {
     }
 
-    public UserDTO(String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
