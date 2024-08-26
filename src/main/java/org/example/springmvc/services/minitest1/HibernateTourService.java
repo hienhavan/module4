@@ -2,6 +2,7 @@ package org.example.springmvc.services.minitest1;
 
 import org.example.springmvc.model.minitest1.Tour;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;

@@ -60,6 +60,7 @@
         <td>
             <a href="#" class="form__btn">Edit</a>
             <button th:onclick="doDelete([[${list.id}]])" class="form__btn">Delete</button>
+            <button type="button" th:onclick="'doDelete(' + ${blog.blogID} + ')'" class="btn btn-danger">Delete</button>
 
         </td>
     </tr>

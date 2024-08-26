@@ -1,6 +1,6 @@
 package org.example.springmvc.homecontroller.bai6_7;
 
-import org.example.springmvc.model.Blog;
+import org.example.springmvc.model.bai6_7.Blog;
 import org.example.springmvc.repository.BlogRepository;
 import org.example.springmvc.services.bai6_7.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;

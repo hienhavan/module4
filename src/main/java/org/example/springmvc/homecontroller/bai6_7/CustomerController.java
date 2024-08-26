@@ -1,5 +1,6 @@
 package org.example.springmvc.homecontroller.bai6_7;
 
+import lombok.RequiredArgsConstructor;
 import org.example.springmvc.model.bai6_7.Customer;
 import org.example.springmvc.services.bai6_7.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/customers")
+//@RequiredArgsConstructor
 public class CustomerController {
     @Autowired
     private ICustomerService customerService;

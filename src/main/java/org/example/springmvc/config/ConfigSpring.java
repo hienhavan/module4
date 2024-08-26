@@ -55,7 +55,7 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/templates/demo_bai8/");
+        templateResolver.setPrefix("/WEB-INF/minitest2/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCacheable(true);
@@ -122,7 +122,7 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     //Upload file
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**")
+        registry.addResourceHandler("/minitest2/image/**")
                 .addResourceLocations("file:" + upload);
     }
 
@@ -132,4 +132,19 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
         resolver.setMaxUploadSizePerFile(52428800);
         return resolver;
     }
+
+//    @Bean
+//    public RedisConnectionFactory redisConnectionFactory() {
+//        // Sử dụng LettuceConnectionFactory để kết nối với Redis
+//        return new LettuceConnectionFactory("localhost", 6379); // Thay đổi theo cấu hình Redis của bạn
+//    }
+//
+//    @Bean
+//    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+//        RedisTemplate<String, Object> template = new RedisTemplate<>();
+//        template.setConnectionFactory(connectionFactory);
+//        template.setKeySerializer(new StringRedisSerializer());
+//        template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
+//        return template;
+//    }
 }

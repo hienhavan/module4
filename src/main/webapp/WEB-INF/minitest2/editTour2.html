@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Tour</title>
+</head>
+<body>
+<h1>Edit Tour</h1>
+<form th:action="@{/minitest2/edit/update/{id}(id=${tour2.id})}" method="post" th:object="${tour2}" enctype="multipart/form-data">
+    <label for="code">Code</label>
+    <input type="text" id="code" th:field="*{code}" placeholder="code"/>
+    <label for="destination">Destination</label>
+    <input type="text" id="destination" th:field="*{destination}" placeholder="destination"/>
+    <label for="start">Start</label>
+    <input type="text" id="start" th:field="*{start}" placeholder="start"/>
+    <label for="img">Image</label>
+    <input type="file" id="img" th:field="*{img}" placeholder="img"/>
+    <input type="submit" value="Update"/>
+</form>
+<a href="/minitest2/showTour">Back to List</a>
+</body>
+</html>

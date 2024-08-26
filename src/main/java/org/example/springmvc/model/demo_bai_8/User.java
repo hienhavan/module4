@@ -8,10 +8,10 @@ import javax.validation.constraints.Size;
 public class User {
 
     @NotBlank
-    @Size(min = 2, max = 30)
+    @Size(min = 1, max = 30,message = "size must be between 1 and 30")
     private String username;
 
-    @Email
+    @Email( message = "..................")
     @NotBlank
     private String email;
 

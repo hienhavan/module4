@@ -1,4 +1,4 @@
-package org.example.springmvc.model;
+package org.example.springmvc.model.bai6_7;
 
 import javax.persistence.*;
 
