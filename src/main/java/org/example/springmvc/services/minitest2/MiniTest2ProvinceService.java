@@ -1,5 +1,6 @@
 package org.example.springmvc.services.minitest2;
 
+import org.example.springmvc.model.dto.ProvinceDTO;
 import org.example.springmvc.model.minitest2.Province;
 import org.example.springmvc.repository.Minitest2ProvinceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +17,11 @@ public class MiniTest2ProvinceService {
     }
     public Province findById(int id){
         return provinceRepository.findById(id).orElse(null);
+    }
+    public void removeById(int id){
+        provinceRepository.deleteProvinceById(id);
+    }
+    public List<ProvinceDTO> listProvinceDTOs(){
+        return provinceRepository.getTourProvinceNumber();
     }
 }

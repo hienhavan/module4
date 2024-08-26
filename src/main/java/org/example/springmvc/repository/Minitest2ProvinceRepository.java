@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface Minitest2ProvinceRepository extends JpaRepository<Province, Integer> {
-    @Query(nativeQuery = true, value = "SELECT province.name, count(tour.id) as number FROM province LEFT JOIN tour ON province_id = province.id GROUP BY province.name")
+    @Query(value = "SELECT p.name AS name, COUNT(t.id) AS number FROM province p LEFT JOIN tour t ON p.id = t.province_id GROUP BY p.name", nativeQuery = true)
     List<ProvinceDTO> getTourProvinceNumber();
 
     @Modifying
     @Transactional
     @Query(nativeQuery = true, value = "CALL UpdateAndDeleteProvince(:id)")
-    void deleteProvinceById(@Param("id") Long id);
+    void deleteProvinceById(@Param("id") int id);
 }

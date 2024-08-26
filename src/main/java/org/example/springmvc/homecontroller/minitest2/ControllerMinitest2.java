@@ -1,6 +1,7 @@
 package org.example.springmvc.homecontroller.minitest2;
 
 import org.example.springmvc.model.bai6_7.Blog;
+import org.example.springmvc.model.dto.ProvinceDTO;
 import org.example.springmvc.model.minitest2.Province;
 import org.example.springmvc.model.minitest2.ResponseObject;
 import org.example.springmvc.model.minitest2.Tour2;
@@ -112,7 +113,21 @@ public class ControllerMinitest2 {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ResponseObject> deleteProvince(@PathVariable int id) {
+        Province province = minitest2ProvinceService.findById(id);
+        if (province != null) {
+            minitest2ProvinceService.removeById(id);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseObject("error", "Not Found", "not found"));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseObject("Successfully deleted", province, "ok"));
+    }
 
+    @GetMapping("/province")
+    List<ProvinceDTO> getAllProvince() {
+        return minitest2ProvinceService.listProvinceDTOs();
+    }
 
 
 //    @GetMapping("/create")
