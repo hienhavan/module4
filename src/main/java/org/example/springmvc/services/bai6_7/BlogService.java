@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BlogService {
     @Autowired
@@ -18,6 +20,19 @@ public class BlogService {
 
     public Page<Blog> searchBlogs(String query, Pageable pageable) {
         return blogRepository.findByTitleContainingIgnoreCase(query, pageable);
+    }
+
+    public List<Blog> blogLists() {
+        return blogRepository.findAll();
+
+    }
+
+    public void updateBlog(Blog blog) {
+        blogRepository.save(blog);
+    }
+
+    public void updateBlog1(Blog blog) {
+        blogRepository.updateBlog(blog.getTitle(), blog.getContent(), blog.getAuthor(), blog.getCreatedAt(), blog.getBlogID());
     }
 
     public void saveBlog(Blog blog) {

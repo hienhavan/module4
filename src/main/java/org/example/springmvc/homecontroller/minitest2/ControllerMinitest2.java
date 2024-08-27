@@ -61,7 +61,7 @@ public class ControllerMinitest2 {
     ResponseEntity<ResponseObject> findById(@PathVariable int id) {
         Optional<Tour2> tour2 = Optional.ofNullable(minitest2Service.findById(id));
         return tour2.isPresent() ?
-                ResponseEntity.status(HttpStatus.OK).body(new ResponseObject("success", tour2, "ok"))
+                ResponseEntity.status(HttpStatus.OK).body(new ResponseObject("success",tour2,"ok"))
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseObject("error", "Not Found", "not found"));
     }
 
