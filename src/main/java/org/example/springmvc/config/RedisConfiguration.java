@@ -29,14 +29,14 @@
 //        return new JedisConnectionFactory(redisStandaloneConfiguration);
 //    }
 //
-//    @Bean
-//    public StringRedisTemplate stringRedisTemplate() {
-//        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-//        stringRedisTemplate.setConnectionFactory(jedisConnectionFactory());
-//        // Optional: use default serializers
-//        return stringRedisTemplate;
-//    }
-//
+////    @Bean
+////    public StringRedisTemplate stringRedisTemplate() {
+////        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+////        stringRedisTemplate.setConnectionFactory(jedisConnectionFactory());
+////        // Optional: use default serializers
+////        return stringRedisTemplate;
+////    }
+////
 //    @Bean
 //    public RedisMessageListenerContainer redisMessageListenerContainer(
 //            JedisConnectionFactory jedisConnectionFactory,
@@ -45,7 +45,6 @@
 //        container.setConnectionFactory(jedisConnectionFactory);
 //        // Đăng ký nhiều kênh
 //        container.addMessageListener(messageListener, new PatternTopic("tech_channel"));
-//        container.addMessageListener(messageListener, new PatternTopic("sports_channel"));
 //        container.addMessageListener(messageListener, new PatternTopic("news_channel"));
 //        return container;
 //    }

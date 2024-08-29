@@ -43,6 +43,7 @@ public class BlogService {
         return blogRepository.findById(id).orElse(null);
     }
 
+
     public void deleteBlog(int id) {
         blogRepository.deleteById(id);
     }

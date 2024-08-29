@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -19,9 +21,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -31,6 +38,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Locale;
 import java.util.Properties;
 
 @Configuration
@@ -51,11 +59,12 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
+
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/minitest2/");
+        templateResolver.setPrefix("/WEB-INF/templates/tt14/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML");
         templateResolver.setCacheable(true);
@@ -119,6 +128,7 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         return properties;
     }
+
     //Upload file
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -132,6 +142,104 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
         resolver.setMaxUploadSizePerFile(52428800);
         return resolver;
     }
+
+    //cấu hình SessionLocaleResolver
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+//        localeResolver.setDefaultLocale(new Locale("vi"));
+//        return localeResolver;
+//    }
+
+    // đặt trong cookie
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        CookieLocaleResolver resolver = new CookieLocaleResolver();
+//        resolver.setDefaultLocale(Locale.ENGLISH);
+//        resolver.setCookieName("myLocaleCookie");
+//        resolver.setCookieMaxAge(3600);
+//        return resolver;
+//    }
+    // fix cứng
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        FixedLocaleResolver resolver = new FixedLocaleResolver();
+//        resolver.setDefaultLocale(Locale.ENGLISH);
+//        return resolver;
+//    }
+
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+//        localeResolver.setDefaultLocale(new Locale("vi"));
+//        return localeResolver;
+//    }
+//
+//    @Bean
+//    public LocaleChangeInterceptor localeChangeInterceptor() {
+//        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+//        interceptor.setParamName("lang");
+//        return interceptor;
+//    }
+//
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(localeChangeInterceptor());
+//    }
+//
+//    @Bean
+//    public ResourceBundleMessageSource messageSource() {
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//        messageSource.setBasename("messages/messages");
+//        messageSource.setDefaultEncoding("UTF-8");
+//        return messageSource;
+//    }
+
+
+
+
+
+
+
+
+
+
+    @Configuration
+    public class WebConfig implements WebMvcConfigurer {
+
+        @Bean
+        public LocaleResolver localeResolver() {
+            SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+            localeResolver.setDefaultLocale(new Locale("vi"));
+            return localeResolver;
+        }
+
+        @Bean
+        public LocaleChangeInterceptor localeChangeInterceptor() {
+            LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+            interceptor.setParamName("lang");
+            return interceptor;
+        }
+
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(localeChangeInterceptor());
+        }
+
+        @Bean
+        public ResourceBundleMessageSource messageSource() {
+            ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+            messageSource.setBasename("messages/messages");
+            messageSource.setDefaultEncoding("UTF-8");
+            return messageSource;
+        }
+    }
+
+
+
+
+
+
 
 //    @Bean
 //    public RedisConnectionFactory redisConnectionFactory() {
@@ -147,4 +255,5 @@ public class ConfigSpring implements WebMvcConfigurer, ApplicationContextAware {
 //        template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
 //        return template;
 //    }
+
 }

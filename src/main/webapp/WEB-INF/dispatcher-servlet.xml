@@ -16,7 +16,7 @@
     <!-- Thymeleaf Resolver Configuration -->
     <bean id="templateResolver"
           class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
-        <property name="prefix" value="/WEB-INF/minitest2/"/>
+        <property name="prefix" value="/WEB-INF/templates/tt14/"/>
         <property name="suffix" value=".html"/>
         <property name="templateMode" value="HTML"/>
         <property name="cacheable" value="true"/>
